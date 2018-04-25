@@ -4,6 +4,7 @@ import com.codein.tree.entry.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 处理二叉树
@@ -21,13 +22,31 @@ public class TreeUtil {
     }
 
     /**
-     * 二叉树的先序遍历
+     * 二叉树的先序遍历（递归）
      * @param root
      * @return
      */
-    public static List<Integer> preOrderTraversal(TreeNode root) {
+    public static List<Integer> preOrderTraversalRecursive(TreeNode root) {
         List<Integer> list = new ArrayList<Integer>();
-        list.add(0);
+        list.add(root.getValue());
+        if (root.getLeft() != null) {
+            list.addAll(preOrderTraversalRecursive(root.getLeft()));
+        }
+        if (root.getRight() != null) {
+            list.addAll(preOrderTraversalRecursive(root.getRight()));
+        }
+
+        return list;
+    }
+
+    /**
+     * 二叉树的先序遍历（迭代）
+     * @param root
+     * @return
+     */
+    public static List<Integer> preOrderTraversalIterative(TreeNode root) {
+        List<Integer> list = new ArrayList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
 
         return list;
     }
